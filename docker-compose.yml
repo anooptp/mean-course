@@ -1,0 +1,50 @@
+version: '3'
+services:
+  web:
+    container_name: web
+    build: ./angular_front
+#    volumes:
+#    - "./angular_front/dist:/usr/share/nginx/html"
+    ports:
+      - "4200:80"
+    networks:
+      - front-tier
+#    links:
+#    - node
+  node:
+    container_name: node
+    build: ./node_backend
+    ports:
+      - "3000:3000"
+    environment:
+#      - MONGO_USERNAME
+#      - MONGO_PASSWORD
+      - MONGO_HOSTNAME=${MONGO_HOSTNAME}
+      - MONGO_PORT=${MONGO_PORT}
+      - MONGO_DB=${MONGO_DB}
+    volumes:
+      - "./node_backend:/src"
+#    links:
+#    - mongo
+    networks:
+      - front-tier
+      - back-tier
+    depends_on:
+      - mongo
+    restart: on-failure
+  mongo:
+    #container_name: mongodatabase
+    container_name: ${MONGO_HOSTNAME}
+    image: mongo
+    volumes:
+    - "/usr/local/var/mongodb:/data/db"
+    networks:
+      - back-tier
+#    ports:
+#    - "27017:27017"
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge

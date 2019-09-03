@@ -1,0 +1,8 @@
+<app-header></app-header>
+<main>
+  <router-outlet></router-outlet>
+  <div style="text-align:center">
+    <h2 *ngIf="production">We are running in production!</h2>
+    <h2 *ngIf="!production">We are running in development...</h2>
+  </div>
+</main>

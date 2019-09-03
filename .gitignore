@@ -1,14 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
-/out-tsc
+/angular_front/dist
+/angular_front/tmp
+/angular_front/out-tsc
 # Only exists if Bazel was run
-/bazel-out
+/angular_front/bazel-out
 
 # dependencies
-/node_modules
+/angular_front/node_modules
+/node_backend/node_modules
 
 # profiling files
 chrome-profiler-events.json
@@ -32,15 +33,15 @@ speed-measure-plugin.json
 .history/*
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+/angular_front/.sass-cache
+/angular_front/connect.lock
+/angular_front/coverage
+/angular_front/libpeerconnection.log
+/angular_front/npm-debug.log
+/angular_front/yarn-error.log
+/angular_front/testem.log
+/angular_front/typings
 
 # System Files
-.DS_Store
-Thumbs.db
+/angular_front/.DS_Store
+/angular_front/Thumbs.db
