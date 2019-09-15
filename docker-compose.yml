@@ -37,6 +37,8 @@ services:
     container_name: ${MONGO_HOSTNAME}
     image: mongo
     volumes:
+    - "mongodb_vol:/data/db"
+    - "./database:/data/db"
     - "/usr/local/var/mongodb:/data/db"
     networks:
       - back-tier
@@ -48,3 +50,6 @@ networks:
     driver: bridge
   back-tier:
     driver: bridge
+
+volumes:
+  mongodb_vol:
